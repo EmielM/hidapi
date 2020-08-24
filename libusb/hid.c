@@ -1006,7 +1006,7 @@ int HID_API_EXPORT hid_write(hid_device *dev, const unsigned char *data, size_t 
 	int report_number = data[0];
 	int skipped_report_id = 0;
 
-	if (report_number == 0x0) {
+	if (report_number != 0x00) {
 		data++;
 		length--;
 		skipped_report_id = 1;
@@ -1177,7 +1177,7 @@ int HID_API_EXPORT hid_send_feature_report(hid_device *dev, const unsigned char 
 	int skipped_report_id = 0;
 	int report_number = data[0];
 
-	if (report_number == 0x0) {
+	if (report_number != 0x00) {
 		data++;
 		length--;
 		skipped_report_id = 1;
@@ -1207,7 +1207,7 @@ int HID_API_EXPORT hid_get_feature_report(hid_device *dev, unsigned char *data, 
 	int skipped_report_id = 0;
 	int report_number = data[0];
 
-	if (report_number == 0x0) {
+	if (report_number != 0x00) {
 		/* Offset the return buffer by 1, so that the report ID
 		   will remain in byte 0. */
 		data++;
